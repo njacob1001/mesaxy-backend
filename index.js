@@ -16,14 +16,14 @@ const path = require('path');
  });
 
  app.get('/state', (req,res) => {
-     response.set('Content-Type', 'application/json');
+     res.set('Content-Type', 'application/json');
      res.write(JSON.stringify({state:state}));
  });
 
  app.get('/restart', (req,res) => {
      state = 1;
-     response.setHeader('Content-Type', 'application/json')
-     res.send({mensaje: 'Estado reincioado, estado actual: 1'});
+     res.set('Content-Type', 'application/json')
+     res.write(JSON.stringify({mensaje: 'Estado reincioado, estado actual: 1'}));
  });
 
  
