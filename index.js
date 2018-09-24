@@ -8,7 +8,7 @@ const path = require('path');
 
  let state = 1;
 
- app.put('/state/:estado', (req,res) => {
+ app.post('/state/:estado', (req,res) => {
      let newState = req.params.estado;
      state = Number(newState);
 
