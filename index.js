@@ -16,8 +16,8 @@ const path = require('path');
  });
 
  app.get('/state', (req,res) => {
-     response.setHeader('Content-Type', 'application/json');
-     res.send({state});
+     response.set('Content-Type', 'application/json');
+     res.write(JSON.stringify({state:state}));
  });
 
  app.get('/restart', (req,res) => {
