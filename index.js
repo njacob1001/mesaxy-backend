@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
+
+
  process.env.PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.urlencoded({ extended:false }));
+app.use(express.json());
 
- app.use(express.urlencoded({ extended:false }));
- app.use(express.json());
-
- let state = 1;
+let state = 1;
 
  app.post('/state/:estado', (req,res) => {
      let newState = req.params.estado;
