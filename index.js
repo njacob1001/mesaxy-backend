@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 
 
  process.env.PORT = process.env.PORT || 3000;
-app.use(cors());
+// app.use(cors());
 app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 
 let state = 1;
+
+app.use(express.static( path.resolve( __dirname, './public' )));
 
  app.post('/state/:estado', (req,res) => {
      let newState = req.params.estado;
