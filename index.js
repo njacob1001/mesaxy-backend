@@ -1,5 +1,11 @@
 const express = require('express');
+const socketIO = require('socket.io');
+const http = require('http');
+
 const app = express();
+let server = http.createServer(app)
+
+
 const path = require('path');
 const cors = require('cors');
 let state = 1;
@@ -32,7 +38,9 @@ app.get('/state', (req,res) => {
      res.json({ mensaje: 'Estado reincioado, estado actual: 1' });
  });
 
+ //IO = esta es la comunicación del backend
+ let io = socketIO(server);
  
- app.listen(process.env.PORT, () => {
+ server.listen(process.env.PORT, () => {
      console.log('Escuchando en el puerto: ', process.env.PORT);
  });
