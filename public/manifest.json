@@ -51,12 +51,12 @@
       "type": "image/png"
     }
   ],
-  "name": "Jacob | making awesome websites",
+  "name": "Jacob Gonzalez",
   "short_name": "Jacob",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "index.html?utm=homescreen",
-  "description": "My personal portfolio as web developer",
+  "description": "Visualiza el estado de la mesa XY de la universidad Autonoma de Occidente",
   "scope": "./",
   "lang": "en",
   "background_color": "#24243E",
