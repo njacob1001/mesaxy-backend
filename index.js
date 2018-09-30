@@ -21,12 +21,12 @@ app.get('/state', (req,res) => {
     res.json({ok: true, state, allow});
 });
 
-app.post('/setstate/:estado', (req,res) => {
+app.get('/setstate/:estado', (req,res) => {
      let newState = req.params.estado;
      state = Number(newState);
 
      res.header('Content-Type', 'application/json');
-     res.json({ok: true});
+     res.json({ok: true, acion:'cambiado', state});
 });
 
 app.get('/stop', (req,res) => {
