@@ -1,9 +1,5 @@
 const express = require('express');
-const socketIO = require('socket.io');
-const http = require('http');
-
 const app = express();
-let server = http.createServer(app)
 
 
 const path = require('path');
@@ -18,29 +14,30 @@ app.use(express.json());
 
 app.use(express.static( path.resolve( __dirname, './public' )));
 
-app.post('/change/:estado', (req,res) => {
+app.post('/setstate/:estado', (req,res) => {
      let newState = req.params.estado;
      state = Number(newState);
 
-     res.send(`Estado cambiado ${newState}`)
+     res.header('Content-Type', 'application/json');
+     res.json({ok: true});
 });
 
 app.get('/state', (req,res) => {
-     console.log('entro');
      res.header('Content-Type', 'application/json');
-     res.json({ok: true, state});
-     console.log('salio xd');
+     res.json({ok: true, state, allow: true});
+});
+app.get('/cancel', (req,res) => {
+    state = 0;
+    res.header('Content-Type', 'application/json');
+     res.json({ok: true, state, allow: false});
 });
 
  app.get('/restart', (req,res) => {
      state = 1;
-     res.header('Content-Type', 'application/json')
-     res.json({ mensaje: 'Estado reincioado, estado actual: 1' });
+     res.header('Content-Type', 'application/json');
+     res.json({ok: true, mensaje: 'Estado reincioado, estado actual: 1' });
  });
-
- //IO = esta es la comunicación del backend
- let io = socketIO(server);
  
- server.listen(process.env.PORT, () => {
+ app.listen(process.env.PORT, () => {
      console.log('Escuchando en el puerto: ', process.env.PORT);
  });
