@@ -34,10 +34,14 @@ app.get('/stop', (req,res) => {
     res.header('Content-Type', 'application/json');
      res.json({ok: true, state, allow});
 });
-
+app.get('/start', (req,res) => {
+    allow = true;
+    res.header('Content-Type', 'application/json');
+     res.json({ok: true, state, allow});
+});
  app.get('/cancel', (req,res) => {
      state = 1;
-     allow = true;
+     allow = false;
      res.header('Content-Type', 'application/json');
      res.json({ok: true, mensaje: 'Estado reincioado, estado actual: 1' });
  });
