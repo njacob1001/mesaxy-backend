@@ -29,14 +29,13 @@ app.post('/setstate/:estado', (req,res) => {
      res.json({ok: true});
 });
 
-app.get('/cancel', (req,res) => {
-    state = 0;
+app.get('/stop', (req,res) => {
     allow = false;
     res.header('Content-Type', 'application/json');
      res.json({ok: true, state, allow});
 });
 
- app.get('/restart', (req,res) => {
+ app.get('/cancel', (req,res) => {
      state = 1;
      allow = true;
      res.header('Content-Type', 'application/json');
